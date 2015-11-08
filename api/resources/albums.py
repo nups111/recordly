@@ -1,8 +1,8 @@
-from api.models import Users
+from api.models import Albums
 from flask_restful import Resource, reqparse, marshal
-from constant_vals import user_field
+from constant_vals import albums_field
 
-class UserListAPI(Resource):
+class AlbumsListAPI(Resource):
 
     def __init__(self):
         self.parser =  reqparse.RequestParser(bundle_errors=True)
@@ -12,12 +12,13 @@ class UserListAPI(Resource):
                                 location='json', help="Username required")
         self.parser.add_argument('email', type=str, required=True,
                                  location='json',help="Email required")
-        super(UserListAPI, self).__init__()
+        super(AlbumsListAPI, self).__init__()
 
     def get(self):
-        users = Users.query.all()
+        albums = Albums.query.all()
         try:
-            return {"users" : [marshal(user, user_field) for user in users] }
+            return {"albums" : [marshal(album, albums_field) for album in albums]}
         except Exception as e:
             print(e)
             return {"error" : "Failed to retrieve users."}, 404
+

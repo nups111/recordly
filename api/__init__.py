@@ -12,13 +12,22 @@ db = SQLAlchemy(app)
 
 
 #import resources
-from .resources import UserListAPI
+from .resources import UserListAPI, SongsListAPI, ArtistsListAPI, AlbumsListAPI
 
 API_VERSION = Config.API_VERSION
 #register resources
 api.add_resource(UserListAPI,
                  '/users'.format(version=API_VERSION),
                  endpoint='users', strict_slashes=False)
+api.add_resource(SongsListAPI,
+                 '/songs'.format(version=API_VERSION),
+                 endpoint='songs', strict_slashes=False)
+api.add_resource(ArtistsListAPI,
+                 '/artists'.format(version=API_VERSION),
+                 endpoint='artists', strict_slashes=False)
+api.add_resource(AlbumsListAPI,
+                 '/albums'.format(version=API_VERSION),
+                 endpoint='albums', strict_slashes=False)
 
 @app.after_request
 def add_cors_headers(response):
