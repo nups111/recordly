@@ -2,23 +2,10 @@
 class Config(object):
     DEBUG = False
     TESTING = False
-    CSRF_ENABLED = True
-    SECRET_KEY = 'this-really-needs-to-be-changed'
-
-
-class ProductionConfig(Config):
-    DEBUG = False
-
-
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
+    API_VERSION = 0
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-
-
-class TestingConfig(Config):
-    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:password@localhost/recordly_db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
