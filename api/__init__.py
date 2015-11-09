@@ -2,10 +2,12 @@ from flask import Flask, render_template, make_response
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
-
+from flask_heroku import Heroku
 
 app = Flask(__name__)
-app.config.from_object('config.DevelopmentConfig')
+# app.config.from_object('config.DevelopmentConfig')
+
+heroku = Heroku(app)
 
 api = Api(app)
 db = SQLAlchemy(app)
