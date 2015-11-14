@@ -7,6 +7,13 @@
 <title>Recordly</title>
 </head>
 <body>
+
+{% if user and not user.is_anonymous %}
+ <li>
+   <a>Hello {{user.username}}!</a>
+ </li>
+
+
 <h1>Recordly</h1>
 
 <button type="button" id="1" onclick="loadSongs()">Songs</button>
@@ -14,7 +21,14 @@
 <button type="button" id="3" onclick="loadAlbums()">Albums</button>
 
 <p id="demo"></p>
+<p id="demo1"></p>
 
+
+ <li>
+   <a href="/">Logout</a>
+ </li>
+
+{% endif %}
 <script src="static/script.js"></script>
 
 </body>

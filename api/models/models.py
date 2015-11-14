@@ -1,4 +1,6 @@
 from api import db
+from werkzeug.security import generate_password_hash, \
+     check_password_hash
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -10,6 +12,16 @@ class Users(db.Model):
         for key, value in kwargs.items():
             if hasattr(self, key):
                 setattr(self, key, value)
+
+
+    def hash_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def verify_password(self, password):
+        pw_hash = self.password
+        print("hash")
+        print(pw_hash)
+        return check_password_hash(pw_hash, password)
 
     def __repr__(self):
         return "{} [{}]".format(self.username, self.email)

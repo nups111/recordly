@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 
 
 #import resources
-from .resources import Index, UserListAPI, SongsListAPI, ArtistsListAPI, AlbumsListAPI, SongAPI, UserAPI, AlbumAPI, ArtistAPI, SignUp, Home
+from .resources import Index, UserListAPI, SongsListAPI, ArtistsListAPI, AlbumsListAPI, SongAPI, UserAPI, AlbumAPI, ArtistAPI, SignUp, Home, SignIn
 
 API_VERSION = Config.API_VERSION
 #register resources
@@ -24,6 +24,8 @@ api.add_resource(Index,
                  '/index'.format(version=API_VERSION))
 api.add_resource(SignUp,
                  '/signup'.format(version=API_VERSION))
+api.add_resource(SignIn,
+                 '/signin'.format(version=API_VERSION))
 api.add_resource(UserListAPI,
                  '/users'.format(version=API_VERSION),
                  endpoint='users', strict_slashes=False)
