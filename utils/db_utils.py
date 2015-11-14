@@ -52,8 +52,6 @@ def create_artists():
 		print("-- artist creation failed..")
 		print(err)
 
-
-
 if __name__=='__main__':
 	reset_db()
 	create_users()

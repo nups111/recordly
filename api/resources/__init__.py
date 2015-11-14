@@ -1,5 +1,5 @@
-from .users import UserListAPI
-from .albums import AlbumsListAPI
-from .artists import ArtistsListAPI
+from .users import UserListAPI, UserAPI
+from .albums import AlbumsListAPI, AlbumAPI
+from .artists import ArtistsListAPI, ArtistAPI
 from .songs import SongsListAPI, SongAPI
-from .index import Index
+from .index import Index, SignUp, Home

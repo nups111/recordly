@@ -28,8 +28,6 @@ class ArtistAPI(Resource):
                                 location='json', help="ID required")
         self.parser.add_argument('name', type=str, required=True,
                                 location='json', help="Name required")
-        self.parser.add_argument('album', type=str, required=True,
-                                 location='json',help="Album required")
         super(ArtistAPI, self).__init__()
 
     def get(self, id):

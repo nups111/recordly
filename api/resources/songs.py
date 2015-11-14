@@ -20,7 +20,7 @@ class SongsListAPI(Resource):
             return {"songs" : [marshal(song, songs_field) for song in songs] }
         except Exception as e:
             print(e)
-            return {"error" : "Failed to retrieve songs."}, 404
+            return {"error" : "Failed to retrieve artists."}, 404
 
 
 class SongAPI(Resource):

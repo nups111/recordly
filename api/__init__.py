@@ -14,15 +14,22 @@ db = SQLAlchemy(app)
 
 
 #import resources
-from .resources import Index, UserListAPI, SongsListAPI, ArtistsListAPI, AlbumsListAPI, SongAPI
+from .resources import Index, UserListAPI, SongsListAPI, ArtistsListAPI, AlbumsListAPI, SongAPI, UserAPI, AlbumAPI, ArtistAPI, SignUp, Home
 
 API_VERSION = Config.API_VERSION
 #register resources
-api.add_resource(Index,
+api.add_resource(Home,
                  '/'.format(version=API_VERSION))
+api.add_resource(Index,
+                 '/index'.format(version=API_VERSION))
+api.add_resource(SignUp,
+                 '/signup'.format(version=API_VERSION))
 api.add_resource(UserListAPI,
                  '/users'.format(version=API_VERSION),
                  endpoint='users', strict_slashes=False)
+api.add_resource(UserAPI,
+                 '/users/<int:id>'.format(version=API_VERSION),
+                 endpoint='user', strict_slashes=False)
 api.add_resource(SongsListAPI,
                  '/songs'.format(version=API_VERSION),
                  endpoint='songs', strict_slashes=False)
@@ -32,9 +39,15 @@ api.add_resource(SongAPI,
 api.add_resource(ArtistsListAPI,
                  '/artists'.format(version=API_VERSION),
                  endpoint='artists', strict_slashes=False)
+api.add_resource(ArtistAPI,
+                 '/artists/<int:id>'.format(version=API_VERSION),
+                 endpoint='artist', strict_slashes=False)
 api.add_resource(AlbumsListAPI,
                  '/albums'.format(version=API_VERSION),
                  endpoint='albums', strict_slashes=False)
+api.add_resource(AlbumAPI,
+                 '/albums/<int:id>'.format(version=API_VERSION),
+                 endpoint='album', strict_slashes=False)
 
 @app.after_request
 def add_cors_headers(response):

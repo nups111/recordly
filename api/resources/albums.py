@@ -8,10 +8,8 @@ class AlbumsListAPI(Resource):
         self.parser =  reqparse.RequestParser(bundle_errors=True)
         self.parser.add_argument('id', type=int, required=True,
                                 location='json', help="ID required")
-        self.parser.add_argument('username', type=str, required=True,
-                                location='json', help="Username required")
-        self.parser.add_argument('email', type=str, required=True,
-                                 location='json',help="Email required")
+        self.parser.add_argument('name', type=str, required=True,
+                                location='json', help="name required")
         super(AlbumsListAPI, self).__init__()
 
     def get(self):
@@ -31,8 +29,6 @@ class AlbumAPI(Resource):
                                 location='json', help="ID required")
         self.parser.add_argument('name', type=str, required=True,
                                 location='json', help="Name required")
-        self.parser.add_argument('album', type=str, required=True,
-                                 location='json',help="Album required")
         super(AlbumAPI, self).__init__()
 
     def get(self, id):
