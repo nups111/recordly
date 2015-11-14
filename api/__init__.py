@@ -5,16 +5,16 @@ from config import Config
 from flask_heroku import Heroku
 
 app = Flask(__name__)
-# app.config.from_object('config.DevelopmentConfig')
+app.config.from_object('config.DevelopmentConfig')
 
-heroku = Heroku(app)
+# heroku = Heroku(app)
 
 api = Api(app)
 db = SQLAlchemy(app)
 
 
 #import resources
-from .resources import Index, UserListAPI, SongsListAPI, ArtistsListAPI, AlbumsListAPI
+from .resources import Index, UserListAPI, SongsListAPI, ArtistsListAPI, AlbumsListAPI, SongAPI
 
 API_VERSION = Config.API_VERSION
 #register resources
@@ -26,6 +26,9 @@ api.add_resource(UserListAPI,
 api.add_resource(SongsListAPI,
                  '/songs'.format(version=API_VERSION),
                  endpoint='songs', strict_slashes=False)
+api.add_resource(SongAPI,
+                 '/songs/<int:id>'.format(version=API_VERSION),
+                 endpoint='song', strict_slashes=False)
 api.add_resource(ArtistsListAPI,
                  '/artists'.format(version=API_VERSION),
                  endpoint='artists', strict_slashes=False)

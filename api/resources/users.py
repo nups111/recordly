@@ -21,3 +21,26 @@ class UserListAPI(Resource):
         except Exception as e:
             print(e)
             return {"error" : "Failed to retrieve users."}, 404
+
+class SongAPI(Resource):
+
+    def __init__(self):
+        self.parser =  reqparse.RequestParser(bundle_errors=True)
+        self.parser.add_argument('id', type=int, required=True,
+                                location='json', help="ID required")
+        self.parser.add_argument('name', type=str, required=True,
+                                location='json', help="Name required")
+        self.parser.add_argument('album', type=str, required=True,
+                                 location='json',help="Album required")
+        super(SongAPI, self).__init__()
+
+    def get(self, id):
+        user = Users.query.filter_by(id=id).first()
+        try:
+            return {"user" : marshal(user, user_field) }
+        except Exception as e:
+            print(e)
+            return {"error" : "Failed to retrieve user."}, 404
+
+
+
