@@ -22,7 +22,7 @@ def create_users():
 def create_albums():
 	try:
 		album1 = Albums(name='album1')
-		album2 = Users(name='album2')
+		album2 = Albums(name='album2')
 		db.session.add(album1)
 		db.session.add(album2)
 		db.session.commit()
@@ -33,7 +33,7 @@ def create_albums():
 def create_songs():
 	try:
 		song1 = Songs(name='song1')
-		song2 = Users(name='song2')
+		song2 = Songs(name='song2')
 		db.session.add(song1)
 		db.session.add(song2)
 		db.session.commit()
@@ -44,7 +44,7 @@ def create_songs():
 def create_artists():
 	try:
 		artist1 = Artists(name='artist1')
-		artist2 = Users(name='artist2')
+		artist2 = Artists(name='artist2')
 		db.session.add(artist1)
 		db.session.add(artist2)
 		db.session.commit()

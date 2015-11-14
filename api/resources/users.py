@@ -31,6 +31,7 @@ class UserListAPI(Resource):
         args = self.parser.parse_args()
         try:
             user = Users(username=args["username"])
+            # if sign up page
             if args["email"] is not None:
                 user.email = args["email"]
                 if args["password"] is not None:
@@ -43,6 +44,7 @@ class UserListAPI(Resource):
                 db.session.commit()
                 headers = {'Content-Type': 'text/html'}
                 return make_response(render_template('index.html', user=user),200, headers)
+            # if login page
             else:
                 user_in_db = Users.query.filter_by(username=user.username).first()
                 if user_in_db is not None:
